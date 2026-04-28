@@ -1,0 +1,6 @@
+export { LoginPage, RegisterPage } from './auth'
+export { ChatsPage } from './chats/ui/ChatsPage'
+export { ChatPage } from './chat/ui/ChatPage'
+export { FriendsPage } from './friends/ui/FriendsPage'
+export { TasksPage } from './tasks/ui/TasksPage'
+export { SettingsPage } from './settings/ui/SettingsPage'

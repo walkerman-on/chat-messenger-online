@@ -1,0 +1,8 @@
+export { socketManager } from './socket'
+export { ROUTES } from './routes'
+export { parseMessage, isTaskCommand } from './message-parser'
+export { getAvatarColor } from './avatar-colors'
+export { getStatusColor } from './user-status'
+export { formatLastSeen } from './last-seen'
+export { getChatAvatar, getChatAvatarColor } from './chat-avatar'
+export { NotificationService } from './notifications'

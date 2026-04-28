@@ -1,0 +1,54 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: telegram-clone-backend
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_HOST=postgres
+      - REDIS_HOST=redis
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ./uploads:/app/uploads
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: telegram-clone-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-postgres}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-postgres}
+      - POSTGRES_DB=${POSTGRES_DB:-telegram_clone}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: telegram-clone-redis
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+
+
+
+
+
+
+
